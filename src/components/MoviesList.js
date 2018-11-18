@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -20,10 +19,10 @@ class MovieList extends Component {
   render() {
     const { movies, fetchMovies } = this.props;
     return (
-      <MovieGrid>
-        <button type="submit" onClick={fetchMovies}>hard reload movies</button>
+      <div className="movie-grid">
+        {/* <button type="submit" onClick={fetchMovies}>hard reload movies</button> */}
         {movies.map(movie => (<Movie key={movie.id} movie={movie} />))}
-      </MovieGrid>
+      </div>
     );
   }
 }
@@ -39,10 +38,3 @@ const mapDispatchToProps = dispatch => bindActionCreators({
 }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(MovieList);
-
-const MovieGrid = styled.div`
-  display: grid;
-  padding: 1rem;
-  grid-template-columns: repeat(6, 1fr);
-  grid-row-gap: 1rem;
-`;

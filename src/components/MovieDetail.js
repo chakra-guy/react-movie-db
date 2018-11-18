@@ -1,13 +1,9 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
-import Overdrive from 'react-overdrive';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import { fetchMovie, resetMovie } from '../actions/MovieActions';
-
-import { PosterImage } from './Movie';
 
 const POSTER_PATH = 'http://image.tmdb.org/t/p/w154';
 const BACKDROP_PATH = 'http://image.tmdb.org/t/p/w1280';
@@ -27,19 +23,24 @@ class MovieDetail extends Component {
 
   render() {
     const { movie } = this.props;
+    const backdrop = `${BACKDROP_PATH}${movie.backdrop_path}`;
+    const styles = {
+      backdrop: {
+        background: `url(${backdrop}) no-repeat`,
+      },
+    };
+
     return (
-      <MovieWrapper backdrop={`${BACKDROP_PATH}${movie.backdrop_path}`}>
-        <MovieInfo>
-          <Overdrive id={`${movie.id}`}>
-            <PosterImage src={`${POSTER_PATH}${movie.poster_path}`} alt={movie.title} />
-          </Overdrive>
+      <div className="movie-detail-wrapper" style={styles.backdrop}>
+        <div className="movie-detail-info">
+          <img className="poster-image" src={`${POSTER_PATH}${movie.poster_path}`} alt={movie.title} />
           <div>
             <h1>{movie.title}</h1>
             <h3>{movie.release_date}</h3>
             <p>{movie.overview}</p>
           </div>
-        </MovieInfo>
-      </MovieWrapper>
+        </div>
+      </div>
     );
   }
 }
@@ -55,24 +56,3 @@ const mapDispatchToProps = dispatch => bindActionCreators({
 }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(MovieDetail);
-
-const MovieWrapper = styled.div`
-  position: relative;
-  padding-top: 50vh;
-  background: url(${props => props.backdrop}) no-repeat;
-  background-size: cover;
-`;
-
-const MovieInfo = styled.div`
-  background-color: white;
-  text-align: left;
-  padding: 0rem 10%;
-  display: flex;
-  > div {
-    margin-left: 20px;
-  }
-  img {
-    position: relative;
-    top: -5rem;
-  }
-`;

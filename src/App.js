@@ -18,17 +18,13 @@ import './App.css';
 
 import MoviesList from './components/MoviesList';
 import MovieDetail from './components/MovieDetail';
-import Message from './components/Message';
-
-const middleware = [
-  thunk,
-  logger,
-];
+import Searchbar from './components/Searchbar';
 
 const store = createStore(
   rootReducer,
   load(),
-  composeWithDevTools(applyMiddleware(...middleware, save())),
+  // composeWithDevTools(applyMiddleware(thunk, logger, save())),
+  composeWithDevTools(applyMiddleware(thunk, save())),
 );
 
 const App = () => (
@@ -36,13 +32,10 @@ const App = () => (
     <Router>
       <div className="App">
 
-        <header className="App-header">
-          <h3>Movie DB</h3>
-          <Link to="/">Homepage</Link>
-          <Link to="/test">test</Link>
-        </header>
-
-        <Message />
+        <nav className="navbar">
+          <Link to="/">Movie DB</Link>
+          <Searchbar />
+        </nav>
 
         <Switch>
           <Route exact path="/" component={MoviesList} />

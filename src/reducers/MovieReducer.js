@@ -17,12 +17,14 @@ export default function (state = initialState, { type, payload }) {
         moviesLoadedAt: new Date(),
         movies: payload,
       };
+
     case FETCH_MOVIE:
       return {
         ...state,
         movieLoaded: true,
         movie: payload,
       };
+
     case RESET_MOVIE:
       return {
         ...state,

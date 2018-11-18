@@ -1,31 +1,113 @@
-.App {
-  text-align: center;
+.navbar {
+  display: grid;
+  padding: 1rem;
+  grid-template-columns: repeat(6, 1fr);
+  grid-row-gap: 1rem;
+  background-color: #161619;
+  height: 60px;
+  border-bottom: 1px solid #303238;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+.navbar > a {
+  color: #fff;
+  font-size: 1.2rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 600;
+  place-self: center;
+}
+.navbar > a:hover {
+  border: 2px solid #303238;
+  padding: 0.4em 0.9em;
+  border-radius: 8px;
+  background-color: #1d1e21;
 }
 
-.App-logo {
 
+.movie-grid {
+  display: grid;
+  padding: 1rem;
+  grid-template-columns: repeat(6, 1fr);
+  grid-row-gap: 1rem;
+  padding-top: 1rem;
+  margin-top: 93px;
 }
 
-.App-header {
-  background-color: #111;
-  min-height: 60px;
+
+.poster {
+  text-decoration: none;
+}
+.poster-image {
+  border-radius: 6px;
+  box-shadow: 0 0 40px #161619b3;
+}
+.poster-title {
+  color: #fff;
+}
+
+
+.movie-detail-wrapper {
+  position: relative;
+  padding-top: 50vh;
+  /* background: url(${props => props.backdrop}) no-repeat; */
+  background-size: cover !important;
+  margin-top: 93px;
+}
+
+.movie-detail-info {
+  background-color: #161619;
+  text-align: left;
+  padding: 0rem 10%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+}
+.movie-detail-info > div {
+  margin-left: 20px;
+  color: #fff;
+}
+.movie-detail-info > img {
+  position: relative;
+  top: -5rem;
 }
 
-.App-link {
-  color: #61dafb;
-}
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.react-autosuggest__container {
+  width: 100%;
+  position: relative;
+  grid-column: 2/6;
+  place-self: center;
+  text-align: left;
 }
+.react-autosuggest__input {
+  width: 100%;
+  border: none;
+  border-radius: 6px;
+  padding: 1rem;
+  font-size: 1rem;
+}
+.react-autosuggest__suggestions-container {
+  color: #000;
+  position: absolute;
+  background-color: #fff;
+  width: 100%;
+}
+.react-autosuggest__suggestions-list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  width: 100%;
+}
+.react-autosuggest__suggestion {
+  cursor: pointer;
+  padding: 10px 20px;
+  width: 100%;
+}
+.react-autosuggest__suggestion--highlighted {
+  background-color: rgb(216, 112, 112);
+}
+/* .react-autosuggest__suggestion-match {
+  color: red;
+  font-weight: bold;
+} */
